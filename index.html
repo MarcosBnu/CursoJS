@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <div id="teste"></div>
-    <button onclick="entrar()">Apelido</button>
-    <ul>
-        <li>1 - Suco</li>
-        <li>2 - Agua</li>
-        <li>3- Sorvete</li>
-        <li>4- Chamar o garçom</li>
-    </ul>
-    <button onclick="pedir()">pedir</button>
+    <form onsubmit="return calcular(event)">
+        <label>Digite seu peso:</label><br>
+        <input type="text" nome="peso" id="peso" placeholder="Digite seu peso"/><br><br>
+        <label>Digite sua altura:</label><br>
+        <input type="text" nome="altura" id="altura" placeholder="Digite seu altura"/><br><br>
+
+        <input type="submit" value="Calcular IMC">
+    </form>
+    <div id="resultado"></div>
     <script src="script.js"></script>
 </body>
 </html>

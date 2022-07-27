@@ -1,52 +1,25 @@
-function entrar(){
-    var teste=document.getElementById('teste'); //Recebe o elemento da id
-    var apelido=prompt("Digite seu apelido");
-    if (apelido=="" || apelido==null){
-        alert("obs, algo deu errado");
-        teste.innerHTML="Digita alguma coisa aiii";
+var peso;
+var altura;
+var IMC;
+var resultado;
+function calcular(event){
+    event.preventDefault();
+    peso=document.getElementById("peso").value;
+    altura=document.getElementById("altura").value;
+    resultado=document.getElementById("resultado");
+    IMC=peso/(altura*altura);   
+    
+    if (IMC<17){
+        resultado.innerHTML='<br/> O IMC é: '+IMC.toFixed(2)+ '<br/> Cuidado voce esta muito a baixo do peso';
     }
-    else{
-        teste.innerHTML="Seu apelido é "+apelido+" ";
-        let botaoSair = document.createElement("button"); //Cria o botão
-        botaoSair.innerText="Sair da conta";
-        botaoSair.onclick=sair;//Coloca no botão o onclick para chamar a função sair
-        teste.appendChild(botaoSair);//Coloca o botão na id teste
+    else if(IMC<=18 && IMC>=17){
+        resultado.innerHTML='<br/> O IMC é: '+IMC.toFixed(2)+ '<br/> Voce esta a baixo do peso';
     }
-}
-
-function sair(){
-    /*var x=1;
-    while(x<11){
-        alert("saindo em: "+x);
-        x++;
+    else if(IMC>=18.5 && IMC<=24.99){
+        resultado.innerHTML='<br/> O IMC é: '+IMC.toFixed(2)+ '<br/> Voce esta no peso ideal';
     }
-    */
-   for(a = 1; a<11; a++){
-    alert("saindo em: "+a);
-   }
-
-    alert("até a proxima");
-    teste.innerHTML="Voce saiu";
-}
-
-function pedir(){
-    pedido=prompt("digite do pedido");
-    pedido=Number(pedido)
-    switch (pedido) {
-        case 1:
-            alert("Voce escolheu 1");
-            break;
-        case 2:
-            alert("Voce escolheu 2");
-            break;
-        case 3:
-            alert("Voce escolheu 3");
-            break;
-        case 4:
-            alert("Voce escolheu 4");
-            break;
-        default:
-            break;
+    else if(IMC>=25 && IMC<=29.99){
+        resultado.innerHTML='<br/> O IMC é: '+IMC.toFixed(2)+ '<br/> Acima do peso';
     }
 }
 //var lista = ['Matheus', 'Lucas', 'Jose', 150];
