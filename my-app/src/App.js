@@ -1,6 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 function App() {
+  let [input, setInput]=useState('');
+  let [terafas, setTarefas]=useState(['Pagar a cota', "Comer"]);
   const [aluno, setAluno] = useState('')
+
+  useEffect(()=>{
+    localStorage.setItem('@tarefa', JSON.stringify(terafas))
+  }, [terafas]);
+
+
   function Trocandonome(nome){
     setAluno(nome);
   }
@@ -17,8 +25,15 @@ function App() {
 
   function registrar(e){
     e.preventDefault();
+    setTarefas([...terafas, input])
     alert("Registrou")
   }
+
+  function adicionarlista(e, valorr){
+    e.preventDefault()
+    setTarefas=[...setTarefas, ]
+  }
+
   return (
     <div className="App">
       <h1>Bem vindo ao meu projeto</h1>
@@ -57,7 +72,23 @@ function App() {
         <button type="submit">Registrar</button>
       </form>
       <br></br><br></br><br></br><br></br>
+      <form onSubmit={registrar}>
+        <label>Lista: </label>
+        <input
+        placeholder='Digite seu nome'
+        value={input}
+        onChange={ (e)=>setInput(e.target.value)}>
+        </input>
+        <br></br><br></br>
+        <button type="submit">Registrar</button>
+      </form>
+      <br></br><br></br><br></br><br></br>
+      <ul>
       <h2>Ola: {aluno}, sua idade é: {idade} , e seu email é: {Email} </h2>
+          {terafas.map(tarefas => (
+            <li key={tarefas}>{tarefas}</li>
+        ))}
+      </ul>
     </div>
   );
 }
