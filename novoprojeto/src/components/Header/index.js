@@ -6,7 +6,7 @@ function Header() {
     return (
       <header>
         <h1>Sujeissssssto programador</h1>
-        <div>
+        <div> 
             <Link to="/">Home</Link>
             <Link to="/sobre">Sobre</Link>
         </div>

@@ -4,9 +4,12 @@ import Home from './pages/Home';
 import Filmes from './pages/Filmes';
 
 
-function routes(){
+import Header from './componets/Header';
+
+function RoutesApp(){
     return(
         <BrowserRouter>
+            <Header/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/filme/:id" element={<Filmes/>}/>
@@ -15,4 +18,4 @@ function routes(){
     )
 }
 
-export default routes;
+export default RoutesApp;
