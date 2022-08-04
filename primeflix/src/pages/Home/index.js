@@ -1,7 +1,40 @@
+import {useEffect, useState} from 'react';
+import api from '../../services/api';
+import {Link} from 'react-router-dom'
+import './index.css'
+
 function Home() {
+  const [filmes, setFilmes]=useState([]);
+
+  useEffect(()=>{
+
+    async function loadFilmes(){
+      const response = await api.get("/movie/now_playing", {
+        params:{
+          api_key: "27359448340448b2e627bc38c5522a77",
+          language:"pt-BR",
+          page: 1,
+        }
+      })
+      setFilmes(response.data.results.slice(0,10))
+      console.log(response)
+    }
+
+    loadFilmes();
+  }, [])  
     return (
-      <div>
-        <h1>Hosssme</h1>
+      <div className='container'>
+        <div className='lista-filmes'>
+          {filmes.map((filme) => {
+            console.log(filme.poster_path)
+            return(
+            <article key={filme.id}>
+              <strong>{filme.title}</strong>
+              <img src={`https://image.tmdb.org/t/p/original${filme.poster_path}`} alt={filme.title} />
+              <Link to={`/filme/${filme.id}`}>Acessar</Link>
+            </article>)
+          })}
+        </div>
       </div>
     );
   }
