@@ -39,7 +39,6 @@ function Home() {
       <div className='container'>
         <div className='lista-filmes'>
           {filmes.map((filme) => {
-            console.log(filme.poster_path)
             return(
             <article key={filme.id}>
               <strong>{filme.title}</strong>
