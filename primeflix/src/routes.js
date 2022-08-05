@@ -5,6 +5,7 @@ import Filmes from './pages/Filmes';
 
 
 import Header from './componets/Header';
+import Erro from './pages/Erro';
 
 function RoutesApp(){
     return(
@@ -13,6 +14,9 @@ function RoutesApp(){
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/filme/:id" element={<Filmes/>}/>
+
+
+                <Route path='*' element={<Erro/>}/>
             </Routes>
         </BrowserRouter>
     )
